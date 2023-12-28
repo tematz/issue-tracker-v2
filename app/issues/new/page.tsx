@@ -4,11 +4,11 @@ import { Button, Callout, TextField } from '@radix-ui/themes'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import { useForm, Controller } from 'react-hook-form'
-import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import axios from 'axios'
 
 import { createIssueSchema } from '@/app/validationSchemas'
 import ErrorMessage from '@/app/components/ErroMessage'
@@ -29,6 +29,17 @@ const NewIssuePage = () => {
   const [error, setError] = useState('')
   const [isSubmitting, setSubmitting] = useState(false)
 
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      setSubmitting(true)
+      await axios.post('/api/issues', data)
+      router.push('/issues')
+    } catch (error) {
+      setSubmitting(false)
+      setError('An unexpected error occurred.')
+    }
+  })
+
   return (
     <div className="max-w-x1">
       {error && (
@@ -37,19 +48,7 @@ const NewIssuePage = () => {
         </Callout.Root>
       )}
 
-      <form
-        className="space-y-3"
-        onSubmit={handleSubmit(async (data) => {
-          try {
-            setSubmitting(true)
-            await axios.post('/api/issues', data)
-            router.push('/issues')
-          } catch (error) {
-            setSubmitting(false)
-            setError('An unexpected error occurred.')
-          }
-        })}
-      >
+      <form className="space-y-3" onSubmit={onSubmit}>
         <TextField.Root>
           <TextField.Input placeholder="Title" {...register('title')} />
         </TextField.Root>
