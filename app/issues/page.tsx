@@ -1,9 +1,9 @@
 import React from 'react'
-import { Table, TableBody } from '@radix-ui/themes'
+import { Table } from '@radix-ui/themes'
 import delay from 'delay'
-import Link from 'next/link'
 
 import IssueStatusBadge from '../components/IssueStatusBadge'
+import Link from '../components/Link'
 
 import IssueActions from './IssueActions'
 
@@ -27,7 +27,7 @@ const IssuesPage = async () => {
             </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
-        <TableBody>
+        <Table.Body>
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
@@ -45,7 +45,7 @@ const IssuesPage = async () => {
               </Table.Cell>
             </Table.Row>
           ))}
-        </TableBody>
+        </Table.Body>
       </Table.Root>
     </div>
   )
