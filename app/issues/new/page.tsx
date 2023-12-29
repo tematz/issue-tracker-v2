@@ -11,7 +11,7 @@ import { z } from 'zod'
 import axios from 'axios'
 
 import { createIssueSchema } from '@/app/validationSchemas'
-import ErrorMessage from '@/app/components/ErroMessage'
+import ErrorMessage from '@/app/components/ErrorMessage'
 import Spinner from '@/app/components/Spinner'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
