@@ -9,7 +9,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 })
 
-  const issue = await prisma.issue.findUnique({ where: { id: Number(params.id) } })
+  const issue = await prisma.issue.findUnique({ where: { id: parseInt(params.id) } })
   if (!issue)
     return NextResponse.json({ error: 'Issue not found' }, { status: 404 })
 
@@ -18,15 +18,15 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     data: { title: body.title, description: body.description }
   })
 
-  return NextResponse.json(updatedIssue, { status: 200 })
+  return NextResponse.json(updatedIssue)
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
-  const issue = await prisma.issue.findUnique({ where: { id: Number(params.id) } })
+  const issue = await prisma.issue.findUnique({ where: { id: parseInt(params.id) } })
   if (!issue)
     return NextResponse.json({ error: 'Issue not found' }, { status: 404 })
 
   await prisma.issue.delete({ where: { id: issue.id } })
 
-  return NextResponse.json({ message: 'Issue deleted' }, { status: 200 })
+  return NextResponse.json({})
 }
