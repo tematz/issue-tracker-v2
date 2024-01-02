@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={inter.variable}>
         <QueryClientProvider>
           <AuthProvider>
-            <Theme appearance="light" accentColor="lime" radius="large">
+            <Theme appearance="dark" accentColor="lime" radius="large">
               <NavBar />
               <main className="p-5">
                 <Container>{children}</Container>
