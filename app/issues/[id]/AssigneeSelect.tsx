@@ -1,34 +1,33 @@
-'use client'
+"use client";
 
-import { Issue, User } from '@prisma/client'
-import { Select } from '@radix-ui/themes'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import toast, { Toaster } from 'react-hot-toast'
-
-import { Skeleton } from '@/app/components'
+import { Skeleton } from "@/app/components";
+import { Issue, User } from "@prisma/client";
+import { Select } from "@radix-ui/themes";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
-  const { data: users, error, isLoading } = useUsers()
+  const { data: users, error, isLoading } = useUsers();
 
-  if (isLoading) return <Skeleton />
+  if (isLoading) return <Skeleton />;
 
-  if (error) return null
+  if (error) return null;
 
   const assignIssue = (userId: string) => {
     axios
-      .patch('/api/issues/' + issue.id, {
+      .patch("/api/issues/" + issue.id, {
         assignedToUserId: userId || null,
       })
       .catch(() => {
-        toast.error('Changes could not be saved.')
-      })
-  }
+        toast.error("Changes could not be saved.");
+      });
+  };
 
   return (
     <>
       <Select.Root
-        defaultValue={issue.assignedToUserId || ''}
+        defaultValue={issue.assignedToUserId || ""}
         onValueChange={assignIssue}
       >
         <Select.Trigger placeholder="Assign..." />
@@ -46,15 +45,16 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
       </Select.Root>
       <Toaster />
     </>
-  )
-}
+  );
+};
 
 const useUsers = () =>
   useQuery<User[]>({
-    queryKey: ['users'],
-    queryFn: () => axios.get('/api/users').then((res) => res.data),
+    queryKey: ["users"],
+    queryFn: () =>
+      axios.get("/api/users").then((res) => res.data),
     staleTime: 60 * 1000, //60s
     retry: 3,
-  })
+  });
 
-export default AssigneeSelect
+export default AssigneeSelect;

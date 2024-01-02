@@ -1,40 +1,42 @@
-'use client'
+'use client';
 
-import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import axios from 'axios'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-
-import { Spinner } from '@/app/components'
+import { Spinner } from '@/app/components';
+import { AlertDialog, Button, Flex } from '@radix-ui/themes';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
-  const router = useRouter()
-  const [error, setError] = useState(false)
-  const [isDeleting, setDeleting] = useState(false)
+  const router = useRouter();
+  const [error, setError] = useState(false);
+  const [isDeleting, setDeleting] = useState(false);
 
   const deleteIssue = async () => {
     try {
-      setDeleting(true)
-      await axios.delete(`/api/issues/${issueId}`)
-      router.push('/issues/list')
-      router.refresh()
+      setDeleting(true);
+      await axios.delete('/api/issues/' + issueId);
+      router.push('/issues/list');
+      router.refresh();
     } catch (error) {
-      setDeleting(false)
-      setError(true)
+      setDeleting(false);
+      setError(true);
     }
-  }
+  };
+
   return (
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
           <Button color="red" disabled={isDeleting}>
-            Delete {isDeleting && <Spinner />}
+            Delete Issue
+            {isDeleting && <Spinner />}
           </Button>
         </AlertDialog.Trigger>
         <AlertDialog.Content>
-          <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+          <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
           <AlertDialog.Description>
-            Are you sure you want to delete this issue?
+            Are you sure you want to delete this issue? This action cannot be
+            undone.
           </AlertDialog.Description>
           <Flex mt="4" gap="3" justify="end">
             <AlertDialog.Cancel>
@@ -44,7 +46,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             </AlertDialog.Cancel>
             <AlertDialog.Action>
               <Button color="red" onClick={deleteIssue}>
-                Delete
+                Delete Issue
               </Button>
             </AlertDialog.Action>
           </Flex>
@@ -54,15 +56,20 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
         <AlertDialog.Content>
           <AlertDialog.Title>Error</AlertDialog.Title>
           <AlertDialog.Description>
-            There was an error deleting this issue.
+            This issue could not be deleted.
           </AlertDialog.Description>
-          <Button variant="soft" color="gray" onClick={() => setError(false)}>
-            Close
+          <Button
+            color="gray"
+            variant="soft"
+            mt="2"
+            onClick={() => setError(false)}
+          >
+            OK
           </Button>
         </AlertDialog.Content>
       </AlertDialog.Root>
     </>
-  )
-}
+  );
+};
 
-export default DeleteIssueButton
+export default DeleteIssueButton;

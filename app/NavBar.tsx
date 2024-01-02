@@ -1,5 +1,6 @@
 'use client'
 
+import { Skeleton } from '@/app/components'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -14,8 +15,6 @@ import {
   Flex,
   Text,
 } from '@radix-ui/themes'
-
-import { Skeleton } from '@/app/components'
 
 const NavBar = () => {
   return (
