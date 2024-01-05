@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Issue Tracker - Full Stack Project
+
+Welcome to the Issue Tracker project! This full-stack application provides a comprehensive solution for managing and tracking issues. It includes a dashboard, authentication with Google, and utilizes a stack of modern technologies to ensure a robust and efficient system.
+
+## Technologies Used
+
+### Dependencies
+
+- **@hookform/resolvers:** Version 3.3.1
+- **@next-auth/prisma-adapter:** Version 1.0.7
+- **@prisma/client:** Version 5.3.1
+- **@radix-ui/react-icons:** Version 1.3.0
+- **@radix-ui/themes:** Version 1.1.2
+- **@tanstack/react-query:** Version 4.35.3
+- **@types/node:** Version 20.6.2
+- **@types/react:** Version 18.2.21
+- **@types/react-dom:** Version 18.2.7
+- **autoprefixer:** Version 10.4.15
+- **axios:** Version 1.5.0
+- **classnames:** Version 2.3.2
+- **delay:** Version 6.0.0
+- **easymde:** Version 2.18.0
+- **eslint:** Version 8.49.0
+- **eslint-config-next:** Version 13.4.19
+- **next:** Version 13.4.19
+- **next-auth:** Version 4.23.1
+- **postcss:** Version 8.4.29
+- **prisma:** Version 5.3.1
+- **react:** Version 18.2.0
+- **react-dom:** Version 18.2.0
+- **react-hook-form:** Version 7.46.1
+- **react-hot-toast:** Version 2.4.1
+- **react-icons:** Version 4.11.0
+- **react-loading-skeleton:** Version 3.3.1
+- **react-markdown:** Version 8.0.7
+- **react-simplemde-editor:** Version 5.2.0
+- **recharts:** Version 2.8.0
+- **tailwindcss:** Version 3.3.3
+- **typescript:** Version 5.2.2
+- **zod:** Version 3.22.2
+
+### Development Dependencies
+
+- **@tailwindcss/typography:** Version 0.5.10
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository: `git clone https://github.com/tematz/issue-tracker.git`
+2. Navigate to the project directory: `cd issue-tracker`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Dashboard:** Explore an intuitive dashboard that provides insights into issue tracking and management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Google Authentication:** Authenticate seamlessly with Google to ensure secure access to the application.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Issue Tracking:** Efficiently manage and track issues, allowing collaboration and resolution.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `pages/`: Next.js pages directory containing the application's pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `components/`: Reusable React components used throughout the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `styles/`: Stylesheets, including Tailwind CSS configurations.
 
-## Deploy on Vercel
+- `prisma/`: Prisma configuration and schema files for database management.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `api/`: API routes for server-side logic.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributions
+
+Contributions are welcome! If you have ideas for new features, improvements, or encounter any issues, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License
+
+---
+
+Happy issue tracking! 🚀
