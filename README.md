@@ -45,7 +45,7 @@ Welcome to the Issue Tracker project! This full-stack application provides a com
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/tematz/issue-tracker.git`
+1. Clone the repository: `git clone https://github.com/your-username/issue-tracker.git`
 2. Navigate to the project directory: `cd issue-tracker`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
